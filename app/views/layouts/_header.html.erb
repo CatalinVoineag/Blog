@@ -25,6 +25,11 @@
 							<li>
 								<%= link_to "Contact", contact_path %>
 							</li>
+							<% if logged_in? %>
+								<li><%= link_to 'Log out', logout_path, method: :delete %></li>
+							<% else %>
+								<li><%= link_to "Sign up", login_path %></li>
+							<% end %>
 					</ul>
 			</div>
 	</div>
