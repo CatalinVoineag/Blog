@@ -1,0 +1,26 @@
+<br><br><br><br>
+
+<%= simple_form_for @post do |f| %>
+	<div class="col-md-12">
+		
+		<div class="from-group ">
+			<%= f.input :user_id, as: :hidden, input_html: { value: current_user.id },  label: false, class:'form-control' %>
+		</div>		
+
+		<div class="from-group">
+			<%= f.label :title %>
+			<%= f.input :title, label: false, class:'form-control' %>
+		</div>
+
+		<div class="from-group">
+			<%= f.label :content %>
+			<%= f.input :content, as: :text, label: false, class:'form-control', input_html: { rows: 10, cols: 55 } %>
+		</div>
+
+		<br>
+		<%= f.submit class:'btn btn-primary' %>
+
+	</div>
+<% end %>
+
+

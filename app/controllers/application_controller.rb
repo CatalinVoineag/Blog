@@ -5,7 +5,8 @@ class ApplicationController < ActionController::Base
 	include Pundit 
   include SessionsHelper
 
-  before_filter :require_user
+ # before_filter :require_user
+  before_filter :set_layout
 
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
@@ -34,5 +35,17 @@ class ApplicationController < ActionController::Base
     session[:return_to] = request.referer
     redirect_back_or(root_path)
   end
+
+  def set_layout
+    self.class.layout 'admin' if params[:admin_scope]
+  end
   
+   def require_admin
+    unless current_user and current_user.admin
+      flash[:error] = "You must be Admin to access this page"
+      redirect_to login_path
+      return false
+    end
+  end
+
 end
