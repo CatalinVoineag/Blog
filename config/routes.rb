@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
 
-  get   'login'  => 'sessions#new'
-  post   'login'  => 'sessions#create'
-  delete 'logout' => 'sessions#destroy'
+
 
   resources :users
 
@@ -21,6 +19,10 @@ Rails.application.routes.draw do
     # We also use some cleverness of scope/namespace where we can set our own parameters
 
     get "/" => "admin#index", as: "admin_root", format: false
+
+      get   'login'  => 'sessions#new'
+      post   'login'  => 'sessions#create'
+      delete 'logout' => 'sessions#destroy'
 
   end
 

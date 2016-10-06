@@ -24,6 +24,7 @@ gem 'awesome_print'
 gem 'bcrypt'
 gem 'pundit'
 gem 'jquery-turbolinks'
+gem 'jquery-ui-rails'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
