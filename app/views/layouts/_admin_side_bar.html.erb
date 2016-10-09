@@ -1,0 +1,51 @@
+  <div id="wrapper">
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="#">
+                        Start Bootstrap
+                    </a>
+                </li>
+                <li>
+                    <%= link_to "Dashboard", admin_root_path %>
+                </li>
+                <li>
+                    <%= link_to "Posts", admin_posts_path %>
+                </li>
+                <li>
+                    <a href="#">User</a>
+                </li>
+                <li>
+                    Log Out
+                    <%# link_to "Log Out", logout_path %>
+                </li>
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
+                        <%= yield %>
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- Menu Toggle Script -->
+    <script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+    </script>

@@ -1,6 +1,6 @@
 <br><br><br><br>
 
-<%= simple_form_for @post do |f| %>
+<%= simple_form_for @post, url: @post.new_record? ? admin_post_create_path : admin_post_update_path do |f| %>
 	<div class="col-md-12">
 		
 		<div class="from-group ">
@@ -17,9 +17,16 @@
 			<%= f.input :content, as: :text, label: false, class:'form-control', input_html: { rows: 10, cols: 55 } %>
 		</div>
 
-		<br>
-		<%= f.submit class:'btn btn-primary' %>
+		<div class="form-group">
+			
+			<%= f.input :archived, as: :boolean %>
+		</div>
 
+		<br>
+		<%= f.submit @post.new_record? ?  'Create Post' : 'Update Post', class:'btn btn-primary' %>
+		<% unless @post.new_record? %>
+			<%= link_to 'Back', admin_post_show_path(@post), class: 'btn btn-primary' %>
+		<% end %>
 	</div>
 <% end %>
 

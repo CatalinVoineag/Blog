@@ -7,4 +7,9 @@ class AdminController < ApplicationController
 		
 	end
 
+	def posts
+		@posts = Post.all
+	end
+
+
 end

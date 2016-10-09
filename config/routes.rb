@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   get 'about' => 'about#index'
   get 'contact' => 'contact#index'
 
-  resources :posts
+  resources :posts, only: [:index, :show]
 
   # Admin Routes / Scoping
   scope :admin, admin_scope: true do 
@@ -23,6 +23,14 @@ Rails.application.routes.draw do
       get   'login'  => 'sessions#new'
       post   'login'  => 'sessions#create'
       delete 'logout' => 'sessions#destroy'
+
+      get '/posts' => 'admin#posts', as: :admin_posts
+
+      get    '/post/new'       => 'posts#new',     as: :admin_post_new
+      post   '/post'           => 'posts#create',  as: :admin_post_create
+      get    '/post/:id'       => 'posts#show',    as: :admin_post_show
+      get    '/post/:id/edit'  => 'posts#edit',    as: :admin_post_edit
+      patch  '/post/:id'       => 'posts#update',  as: :admin_post_update
 
   end
 

@@ -1,3 +1,8 @@
+<% if params[:admin_scope] == true && current_user.admin == true %>
+	<%= link_to 'Back', admin_posts_path, class: 'btn btn-primary btn-xs' %>
+	<%= link_to 'Edit', admin_post_edit_path(@post), class:'btn btn-primary btn-xs' %>
+<% end %>
+
 <h1><%= @post.title %></h1>
 
 <p>

@@ -1,0 +1,27 @@
+<br><br>
+
+<%= link_to 'New Post', admin_post_new_path, class:'btn btn-primary' %>
+<br><br>
+
+<div class="table-responsive">
+	<table class="table table-bordered table-hover">
+	  <thead>
+	  	<tr>
+	  		<th>Title</th>
+	  		<th>Content</th>
+	  		<th>Archived</th>
+	  	</tr>
+	  </thead>
+	  <tbody>
+		  <% @posts.each do |post| %>
+
+		  	<tr class="active" onclick="document.location='<%= admin_post_show_path(post) %>';">
+		  		<td><%= post.title %></td>
+		  		<td><%= post.content.truncate(30) %></td>
+		  		<td><%= post.archived %></td>
+		  	</tr>
+
+		  <% end %>
+		</tbody>
+	</table>
+</div>
