@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
 
 
-  resources :users
+  #resources :users
 
   root 'static_pages#index'
 
@@ -20,7 +20,16 @@ Rails.application.routes.draw do
 
     get "/" => "admin#index", as: "admin_root", format: false
 
-      get   'login'  => 'sessions#new'
+    get    '/users'         => 'users#index',   as: :admin_users
+    get    '/user/new'      => 'users#new',     as: :admin_user_new
+    post   '/user'          => 'users#create',  as: :admin_user_create
+    get    '/user/:id'      => 'users#show',    as: :admin_user_show
+    get    '/user/:id/edit' => 'users#edit',    as: :admin_user_edit
+    patch  '/user/:id'      => 'users#update',  as: :admin_user_update
+    delete '/user/:id'      => 'users#destroy', as: :admin_user_destroy
+
+
+      get    'login'  => 'sessions#new'
       post   'login'  => 'sessions#create'
       delete 'logout' => 'sessions#destroy'
 

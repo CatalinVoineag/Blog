@@ -25,6 +25,7 @@ gem 'bcrypt'
 gem 'pundit'
 gem 'jquery-turbolinks'
 gem 'jquery-ui-rails'
+gem 'disqus_rails'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'

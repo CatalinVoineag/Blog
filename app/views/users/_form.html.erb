@@ -1,4 +1,4 @@
-<%= simple_form_for @user do |f| %>
+<%= simple_form_for @user, url: @user.new_record? ? admin_user_create_path : admin_user_update_path do |f| %>
 	<div class="col-md-6 col-offset-3">
 		
 		<div class="from-group">
@@ -11,6 +11,7 @@
 			<%= f.email_field :email, label: false, class:'form-control' %>
 		</div>
 
+
 		<div class="from-group">
 			<%= f.label :password %>	
 			<%= f.password_field :password, label: false, class:'form-control' %>
@@ -18,7 +19,11 @@
 
 		<div class="from-group">
 			<%= f.label :password_confirmation, "Confirmation" %>
-			<%= f.password_field :password_confirmation, label: false, class:'form-control' %>
+			<%= f.password_field :password_confirmation, label: false, class:'form-control'  %>
+		</div>
+
+		<div >
+			<%= f.input :admin, as: :boolean %>
 		</div>
 
 		<br>

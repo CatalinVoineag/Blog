@@ -16,4 +16,5 @@
 //= require jquery_ujs
 //= require jquery-ui
 //= require bootstrap-sprockets
+//= require disqus_rails
 //= require_tree .

@@ -1,46 +1,56 @@
 class UsersController < ApplicationController
 
   before_action :logged_in_user, only: [:edit, :update, :destroy]
-  before_action :correct_user, only: [:edit, :update, :show]
+#  before_action :correct_user, only: [:edit, :update, :show]
   before_action :set_user, only: [:edit, :update, :show, :destroy]
-  before_action :admin_user, only: [:index]
+  before_action :admin_user
 
-  after_filter :verify_authorized, only: [ :index] 
+  #after_filter :verify_authorized, only: [ :index] 
 
   def index
     @users = User.all
-    authorize @users
+   # authorize @users
   end
 
+   def new
+    @user = User.new
+  end
 
+  def create
+    @user = User.new(user_params)
+    if @user.save
+      log_in @user
+      redirect_to admin_users_path, notice: "User Created" 
+    else
+      redirect_to admin_user_new_path
+      flash[:error] = AlertsHelper.getErrorAlertMessages(@user)
+    
+    end
+  end
 
   def edit
     @user
   end
 
   def update
-    respond_to do |format|
-      if @user.update_attributes(user_params)
-        format.html { redirect_to root_path, notice: "Profile Updated" }
-        #format.json { render :index, status: :created, location: @user }
-      else
-        flash.now[:error] = AlertsHelper.getErrorAlertMessages(@user)
-        format.html { render :edit }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
+    if @user.update_attributes(user_params)
+      redirect_to admin_users_path, notice: "Profile Updated" 
+    else
+    redirect_to admin_user_edit_path(@user)
+    flash[:error] = AlertsHelper.getErrorAlertMessages(@user)
     end
   end
 
   def destroy
     @user.destroy
-    authorize @user
+    #authorize @user
     flash[:success] = "User deleted"
-    redirect_to users_path
+    redirect_to admin_users_path
   end
 
   def show
     @user
-    authorize @user
+    #authorize @user
   end
 
   private
@@ -72,11 +82,14 @@ class UsersController < ApplicationController
 
     # Confirms an admin user
     def admin_user
-      redirect_to root_path unless current_user.admin?
+      if current_user.nil? || !current_user.admin? 
+        redirect_to root_path
+        flash[:error] = "You are not allowed to perform that action"
+      end 
     end
 
     def user_params
-      params.require(:user).permit(:name, :email, :password, :password_confirmation)
+      params.require(:user).permit(:name, :email, :password, :password_confirmation, :admin)
     end
 
 end

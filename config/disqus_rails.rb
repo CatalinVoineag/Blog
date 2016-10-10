@@ -1,0 +1,1 @@
+disqus_rails.rb
