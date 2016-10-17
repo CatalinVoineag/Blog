@@ -17,7 +17,7 @@ class PostsController < ApplicationController
 			flash[:notice] = "Post Created"
 			redirect_to admin_post_show_path(@post)
 		else
-			flash[:error] = AlertsHelper.getErrorAlertMessages(@order)
+			flash[:error] = AlertsHelper.getErrorAlertMessages(@post)
 			render admin_post_new_path
 		end
 	end
@@ -33,9 +33,9 @@ class PostsController < ApplicationController
 	def update
 		if @post.update_attributes(post_params)
 			flash[:notice] = "Post Updated"
-			redirect_to @post
+			redirect_to admin_post_show_path(@post)
 		else
-			flash[:error] = AlertsHelper.getErrorAlertMessages(@order)
+			flash[:error] = AlertsHelper.getErrorAlertMessages(@post)
 			render admin_post_edit_path(@post)
 		end
 	end
@@ -43,13 +43,13 @@ class PostsController < ApplicationController
 	private
 
 		def post_params
-			params.require(:post).permit(:user_id, :content, :title, :archived)
+			params.require(:post).permit(:user_id, :content, :title, :archived, :slug)
 		end
 
 		# Before filters
 
 		def set_post
-			@post = Post.find(params[:id])
+			@post = Post.friendly.find(params[:id])
 		end
 
 		def require_admin

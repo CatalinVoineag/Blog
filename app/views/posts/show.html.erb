@@ -1,12 +1,29 @@
-<% if params[:admin_scope] == true && current_user.admin == true %>
-	<%= link_to 'Back', admin_posts_path, class: 'btn btn-primary btn-xs' %>
-	<%= link_to 'Edit', admin_post_edit_path(@post), class:'btn btn-primary btn-xs' %>
-<% end %>
+<div class="col-md-12">
+	<% if params[:admin_scope] == true && current_user.admin == true %>
+		<%= link_to 'Back', admin_posts_path, class: 'btn btn-primary btn-xs' %>
+		<%= link_to 'Edit', admin_post_edit_path(@post), class:'btn btn-primary btn-xs' %>
+	<% end %>
 
-<h1><%= @post.title %></h1>
+	<h1><%= @post.title %></h1>
 
-<p>
-	<%= @post.content %>
-</p>
+	<p>
+		<%= markdown(@post.content) %>
+	</p>
 
-<h2>Posted by <%= @post.user.name %></h2>
+	<h2>Posted by <%= @post.user.name %></h2>
+
+	<% unless params[:admin_scope] %>
+		<div id="share_box">
+			<p>Share this article or Post Title?</p>
+			<!-- Twitter -->
+			<a onclick="javascript:window.open('http://twitter.com/share?text=<%= @post.title %> by @cata94v - &amp;url=<%= url_for([@post, {only_path: false}]) %>', '_blank', 'width=800, height=500, top=200, left=300');void(0);">Twitter</a>
+			<!-- Facebook -->
+			<a onclick="javascript:window.open('http://www.facebook.com/sharer.php?u=<%= url_for([@post, {only_path: false}]) %>', '_blank', 'width=800, height=500, top=200, left=300');void(0);">Facebook</a>
+			<!-- Google Plus -->
+			<a onclick="javascript:window.open('https://plus.google.com/share?url=<%= url_for([@post, {only_path: false}]) %>', '_blank', 'width=800, height=500, top=200, left=300');void(0);">Google Plus</a>
+		</div>
+
+		<%= render 'disqus' %>                   
+	<% end %>
+
+</div>	

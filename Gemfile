@@ -26,6 +26,12 @@ gem 'pundit'
 gem 'jquery-turbolinks'
 gem 'jquery-ui-rails'
 gem 'disqus_rails'
+gem 'pygments.rb'
+gem 'redcarpet'
+gem 'friendly_id'
+gem 'mail_form'
+gem 'mailman'
+gem 'figaro'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
