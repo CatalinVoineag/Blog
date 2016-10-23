@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   #get 'contact' => 'contact#index'
   resources :contacts, only: [:new, :create]
 
+  post 'email' => 'contacts#email', as: :contact_email
+
   resources :posts, only: [:index, :show]
 
   # Admin Routes / Scoping
