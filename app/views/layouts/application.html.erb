@@ -15,11 +15,16 @@
 
   <%# disqus_init %>
 
-	<%= render 'layouts/header' %>
+ 
+  <%= render 'layouts/page_header' %>
 
-	<%= render 'layouts/flash_messages' %>
-
-	<%= yield %>
+  <div class="container">
+    <div class="row">
+      <%= render 'layouts/flash_messages' %>
+    
+      <%= yield %>
+    </div>
+  </div>
 
 	<%= render 'layouts/footer' %>
 

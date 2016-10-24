@@ -32,6 +32,7 @@ gem 'friendly_id'
 gem 'mail_form'
 gem 'mailman'
 gem 'figaro'
+gem 'autoprefixer-rails'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
