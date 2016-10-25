@@ -9,7 +9,7 @@
 
 body {
     background-color: #f0f0f0;
-    padding-top: 12%; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+    padding-top: 5%; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
 }
 
 footer {
@@ -41,20 +41,35 @@ footer {
 .navbar_content {
   margin-top: 5%;
 
-  a {
-    color:red;
-  }
 
 }
 
 .navbar-header a {
-  color:red;
   text-decoration:none;
 }
 
 
 /* Blog Content */
+
+.main_content {
+  
+}
+
+.side_content {
+  
+}
+
 #blog_content {
   background-color: #ffffff;
-  padding:7%;
+  padding:5.5%;
 }
+
+.page-header:hover {
+  color: #777;
+}
+
+.code {
+  font-family: "Noto Serif", serif;
+  font-size: 19px;
+  color: #333333;
+} 
