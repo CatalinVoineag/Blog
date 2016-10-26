@@ -33,6 +33,7 @@ gem 'mail_form'
 gem 'mailman'
 gem 'figaro'
 gem 'autoprefixer-rails'
+gem "font-awesome-rails"
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'

@@ -1,5 +1,7 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "font-awesome";
+/*@import "pygments"; */
 
 /*!
  * Start Bootstrap - Blog Home (http://startbootstrap.com/)
@@ -59,17 +61,52 @@ footer {
   
 }
 
-#blog_content {
+.blog_content {
   background-color: #ffffff;
   padding:5.5%;
 }
 
 .page-header:hover {
   color: #777;
+  cursor: pointer;
 }
 
-.code {
-  font-family: "Noto Serif", serif;
+.content {
   font-size: 19px;
   color: #333333;
 } 
+
+li {
+  list-style: none;
+  padding-top: 5px;
+}
+
+ul {
+  padding-left: 0;
+}
+
+p {
+  font-family: "Noto Serif", serif;
+}
+
+.logo {
+  cursor: pointer;
+}
+
+.glyphics {
+  cursor: pointer;
+  padding-right:7px;
+}
+
+.glyphics_p {
+  cursor: pointer;
+
+  &:hover {
+    color: #555;
+  };
+}
+
+.text_area {
+  max-width: 100%;
+  max-height: 250px;
+}

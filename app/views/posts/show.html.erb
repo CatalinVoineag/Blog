@@ -1,16 +1,17 @@
-<div class="col-md-12">
+ <div class="col-xs-8  main_content blog_content" >
 	<% if params[:admin_scope] == true && current_user.admin == true %>
 		<%= link_to 'Back', admin_posts_path, class: 'btn btn-primary btn-xs' %>
 		<%= link_to 'Edit', admin_post_edit_path(@post), class:'btn btn-primary btn-xs' %>
 	<% end %>
 
-	<h1><%= @post.title %></h1>
+	<h1 class="page-header"><%= @post.title %></h1>
 
-	<p>
-		<%= markdown(@post.content) %>
-	</p>
+	<content class="content"><%= markdown(@post.content) %></content>
 
-	<h2>Posted by <%= @post.user.name %></h2>
+	<!--<h2>Posted by <%# @post.user.name %></h2> -->
+
+
+
 
 	<% unless params[:admin_scope] %>
 		<div id="share_box">
@@ -26,4 +27,6 @@
 		<%= render 'disqus' %>                   
 	<% end %>
 
-</div>	
+</div>
+
+<%= render 'shared/side_bar' %>	
