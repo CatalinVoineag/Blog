@@ -40,7 +40,7 @@ Rails.application.routes.draw do
 
       get    '/post/new'       => 'posts#new',     as: :admin_post_new
       post   '/post'           => 'posts#create',  as: :admin_post_create
-      get    '/post/:id'       => 'posts#show',    as: :admin_post_show
+      get    '/post/:id'       => 'posts#show_admin',    as: :admin_post_show
       get    '/post/:id/edit'  => 'posts#edit',    as: :admin_post_edit
       patch  '/post/:id'       => 'posts#update',  as: :admin_post_update
 

@@ -4,14 +4,6 @@
 	<% @posts.each do |post| %>
     <h1 class="page-header" onclick="document.location='<%= post_path(post) %>'"><%= post.title %></h1>
 
-    <!-- First Blog Post -->
-<!--      <p class="lead">
-        by <a href="index.php">Catalin Voineag</a>
-    </p>
-    <p><span class="glyphicon glyphicon-time"></span> Posted on August 28, 2013 at 10:00 PM</p>
-    
-    
-    <hr> -->
     <content class="content"><%= markdown(post.content) %></content>
  
     <a class="btn btn-primary" href="#">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>

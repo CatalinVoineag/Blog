@@ -34,6 +34,7 @@ gem 'mailman'
 gem 'figaro'
 gem 'autoprefixer-rails'
 gem "font-awesome-rails"
+gem 'puma'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'

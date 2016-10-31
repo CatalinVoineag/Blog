@@ -1,0 +1,31 @@
+<% 
+	admin_login = true if !current_user.nil? && current_user.admin? 
+%>
+
+ <div class="col-xs-8  main_content blog_content" >
+	<% if admin_login %>
+		<%= link_to 'Back', admin_posts_path, class: 'btn btn-primary btn-xs' %>
+		<%= link_to 'Edit', admin_post_edit_path(@post), class:'btn btn-primary btn-xs' %>
+	<% end %>
+
+	<h1 class="page-header"><%= @post.title %></h1>
+
+	<content class="content"><%= markdown(@post.content) %></content>
+
+	<!--<h2>Posted by <%# @post.user.name %></h2> -->
+	
+	<div id="share_box">
+		<p>Share this article or Post Title?</p>
+		<!-- Twitter -->
+		<a onclick="javascript:window.open('http://twitter.com/share?text=<%= @post.title %> by @cata94v - &amp;url=<%= url_for([@post, {only_path: false}]) %>', '_blank', 'width=800, height=500, top=200, left=300');void(0);">Twitter</a>
+		<!-- Facebook -->
+		<a onclick="javascript:window.open('http://www.facebook.com/sharer.php?u=<%= url_for([@post, {only_path: false}]) %>', '_blank', 'width=800, height=500, top=200, left=300');void(0);">Facebook</a>
+		<!-- Google Plus -->
+		<a onclick="javascript:window.open('https://plus.google.com/share?url=<%= url_for([@post, {only_path: false}]) %>', '_blank', 'width=800, height=500, top=200, left=300');void(0);">Google Plus</a>
+	</div>
+
+	<%= render 'disqus' %>                   
+
+</div>
+
+<%= render 'shared/side_bar' %>	

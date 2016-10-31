@@ -18,11 +18,15 @@ class PostsController < ApplicationController
 			redirect_to admin_post_show_path(@post)
 		else
 			flash[:error] = AlertsHelper.getErrorAlertMessages(@post)
-			render admin_post_new_path
+			redirect_to admin_post_new_path
 		end
 	end
 
 	def show
+		render layout: 'application'
+	end
+
+	def show_admin
 		@post
 	end
 
@@ -36,7 +40,7 @@ class PostsController < ApplicationController
 			redirect_to admin_post_show_path(@post)
 		else
 			flash[:error] = AlertsHelper.getErrorAlertMessages(@post)
-			render admin_post_edit_path(@post)
+			redirect_to admin_post_edit_path(@post)
 		end
 	end
 
