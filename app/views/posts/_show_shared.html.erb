@@ -14,14 +14,19 @@
 
 	<!--<h2>Posted by <%# @post.user.name %></h2> -->
 	
+<div class="tooltip">Hover over me
+  <span class="tooltiptext">Tooltip text</span>
+</div>
+		
 	<div id="share_box">
 		<p>Share this article or Post Title?</p>
 		<!-- Twitter -->
-		<a onclick="javascript:window.open('http://twitter.com/share?text=<%= @post.title %> by @cata94v - &amp;url=<%= url_for([@post, {only_path: false}]) %>', '_blank', 'width=800, height=500, top=200, left=300');void(0);">Twitter</a>
+
+		<a onclick="javascript:window.open('http://twitter.com/share?text=<%= @post.title %> by @cata94v - &amp;url=<%= url_for([@post, {only_path: false}]) %>', '_blank', 'width=800, height=500, top=200, left=300');void(0);"><i style="font-size: 22px" class="fa fa-2x fa-twitter glyphics white_with_black_border" aria-hidden="true"></i></a>
 		<!-- Facebook -->
-		<a onclick="javascript:window.open('http://www.facebook.com/sharer.php?u=<%= url_for([@post, {only_path: false}]) %>', '_blank', 'width=800, height=500, top=200, left=300');void(0);">Facebook</a>
+		<a onclick="javascript:window.open('http://www.facebook.com/sharer.php?u=<%= url_for([@post, {only_path: false}]) %>', '_blank', 'width=800, height=500, top=200, left=300');void(0);"><i style="font-size: 22px" class="fa fa-2x fa-facebook white_with_black_border" aria-hidden="true"></i></a>
 		<!-- Google Plus -->
-		<a onclick="javascript:window.open('https://plus.google.com/share?url=<%= url_for([@post, {only_path: false}]) %>', '_blank', 'width=800, height=500, top=200, left=300');void(0);">Google Plus</a>
+		<a style="margin-left: 7px" onclick="javascript:window.open('https://plus.google.com/share?url=<%= url_for([@post, {only_path: false}]) %>', '_blank', 'width=800, height=500, top=200, left=300');void(0);"><i style="font-size: 22px" class="fa fa-2x fa-google-plus white_with_black_border" aria-hidden="true"></i></a>
 	</div>
 
 	<%= render 'disqus' %>                   
@@ -29,3 +34,4 @@
 </div>
 
 <%= render 'shared/side_bar' %>	
+
