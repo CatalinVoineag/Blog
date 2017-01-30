@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   get 'about' => 'about#index'
   #get 'contact' => 'contact#index'
-  resources :contacts, only: [:new, :create]
+  resources :contacts
 
   post 'email' => 'contacts#email', as: :contact_email
 

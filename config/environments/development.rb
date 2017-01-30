@@ -13,7 +13,7 @@ Rails.application.configure do
   config.consider_all_requests_local       = true
   config.action_controller.perform_caching = false
 
-  config.action_mailer.default_url_options = { host: 'localhost3000' }
+  #config.action_mailer.default_url_options = { host: 'localhost3000' }
   
 
   config.action_mailer.perform_deliveries = false
@@ -46,16 +46,19 @@ Rails.application.configure do
   # config.action_view.raise_on_missing_translations = true
 
 
+
 config.action_mailer.delivery_method = :smtp
-# SMTP settings for gmail
+
 config.action_mailer.smtp_settings = {
- :address              => "smtp.gmail.com",
- :port                 => 587,
- :user_name            => ENV['gmail_username'],
- :password             => ENV['gmail_password'],
- :authentication       => "plain",
-:enable_starttls_auto => true
+     :address              => "smtp.gmail.com",
+     :port                 => 587,
+     :user_name            => ENV['gmail_username'],
+     :password             => ENV['gmail_password'],
+     :authentication       => "plain",
+    :enable_starttls_auto => true
 }
+
+
 
 
 end

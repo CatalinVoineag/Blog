@@ -1,26 +1,6 @@
 <div class="col-xs-8 main_content blog_content">
 	
-	<p class="content">
-		Want to get in touch with me? Fill out the form below to send me a message and I will try to get back to you within 24 hours!
-	</p>
-	<hr>
-	<%= form_for contact_email_path do |f| %>
-
-		<%= f.label :name %>
-		<br>
-		<%= f.text_field :name %>
-		<br><br>
-		<%= f.label :email %>
-		<br>
-		<%= f.email_field :email %>
-		<br><br>
-		<%= f.label :message %>
-		<br>
-		<%= f.text_area :message, rows:8, cols:50, class: 'text_area' %>
-		<br><br>
-		<%= submit_tag "Send email", class: 'btn btn-default' %>
-
-	<% end %>
+	<%= render 'form' %>
 
 </div>
 

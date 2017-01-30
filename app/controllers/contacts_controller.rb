@@ -1,28 +1,26 @@
 class ContactsController < ApplicationController
 
+	before_action :set_contact, only: [:show, :destroy]
+
 	def index
+		@contacts = Contact.all
 	end
 
 	def new
 		@contact = Contact.new
 	end
 
-	# def create
-	# 	@contact = Contact.new(params.permit![:contact])
-	# 	@contact.request = request
-	# 	if @contact.deliver
-	# 		contact = ContactMailer.sample_email
-	# 		if contact.deliver
-	# 			flash[:notice] = "Thank you for your message!"
-	# 		else
-	# 			flash[:error] = "Email not sent"
-	# 		end
-	# 		redirect_to root_path
-	# 	else
-	# 		flash[:error] = AlertsHelper.getErrorAlertMessages(@contact)
-	# 		render :new
-	# 	end
-	# end
+	def create
+		@contact = Contact.new(contact_params)
+		if @contact.save
+			ContactMail.send_email.deliver
+			flash[:notice] = "Thank you for your message."
+			redirect_to root_path
+		else
+			flash[:error] = AlertsHelper.getErrorAlertMessages(@contact)
+			redirect_to new_contact_path
+		end
+	end
 
 	def email
 		username = params[:name] 
@@ -35,6 +33,17 @@ class ContactsController < ApplicationController
 		end 
 		redirect_to :back
 	end
+
+	private 
+
+		def set_contact
+			@contact = Contact.find(params[:id])
+		end
+
+		def contact_params
+			params.require(:contact).permit(:name, :email, :message)
+		end
+
 
 
 end
