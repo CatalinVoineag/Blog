@@ -15,7 +15,7 @@ module AlertsHelper
       end
     end
     msg << '</ul>'
-    return msg.html_safe
+    return msg
   end
 
 

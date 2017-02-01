@@ -7,10 +7,9 @@ Rails.application.routes.draw do
   root 'static_pages#index'
 
   get 'about' => 'about#index'
-  #get 'contact' => 'contact#index'
-  resources :contacts
 
-  post 'email' => 'contacts#email', as: :contact_email
+  resources :messages, only: [:new, :create]
+
 
   resources :posts, only: [:index, :show]
 
@@ -37,6 +36,10 @@ Rails.application.routes.draw do
       delete 'logout' => 'sessions#destroy'
 
       get '/posts' => 'admin#posts', as: :admin_posts
+      # Messages
+      get '/messages' => 'admin#messages', as: :admin_messages
+      get '/message/:id' => 'admin#show_message', as: :admin_message
+      delete '/message/:id' => 'admin#delete_message', as: :admin_delete_message
 
       get    '/post/new'       => 'posts#new',     as: :admin_post_new
       post   '/post'           => 'posts#create',  as: :admin_post_create

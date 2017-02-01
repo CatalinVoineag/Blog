@@ -1,6 +1,7 @@
   <div id="wrapper">
 
         <!-- Sidebar -->
+      <% if current_user && current_user.admin %>
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
                 <li class="sidebar-brand">
@@ -15,6 +16,9 @@
                     <%= link_to "Posts", admin_posts_path %>
                 </li>
                 <li>
+                    <%= link_to "Messages", admin_messages_path %>
+                </li>
+                <li>
                     <%= link_to 'Users', admin_users_path %>
                 </li>
                 <li>
@@ -22,6 +26,7 @@
                 </li>
             </ul>
         </div>
+      <% end %>
         <!-- /#sidebar-wrapper -->
 
         <!-- Page Content -->
@@ -32,9 +37,8 @@
 
                          <%= render 'layouts/flash_messages' %>
                         
-                       
-                        <%= yield %>
-                       
+                         <%= yield %>
+
                     </div>
                 </div>
             </div>
@@ -44,10 +48,3 @@
     </div>
     <!-- /#wrapper -->
 
-    <!-- Menu Toggle Script -->
-    <script>
-    $("#menu-toggle").click(function(e) {
-        e.preventDefault();
-        $("#wrapper").toggleClass("toggled");
-    });
-    </script>

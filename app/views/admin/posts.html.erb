@@ -15,7 +15,7 @@
 	  <tbody>
 		  <% @posts.each do |post| %>
 
-		  	<tr class="active" onclick="document.location='<%= admin_post_show_path(post) %>';">
+		  	<tr class="active" onclick="document.location='<%= admin_post_show_path(post) %>';" style="cursor:pointer">
 		  		<td><%= post.title %></td>
 		  		<td><%= post.content.truncate(30) %></td>
 		  		<td><%= post.archived %></td>

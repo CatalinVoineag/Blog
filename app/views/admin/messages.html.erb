@@ -1,0 +1,35 @@
+<br><br>
+
+<% if @messages.count > 0 %>
+
+	<div class="table-responsive">
+		<table class="table table-bordered table-hover">
+		  <thead>
+		  	<tr>
+		  		<th>Name</th>
+		  		<th>Message</th>
+		  		<th>Email</th>
+		  		<th></th>
+		  	</tr>
+		  </thead>
+		  <tbody>
+			  <% @messages.each do |message| %>
+
+			  	<% color = message.read ? '' : 'red' %>
+
+			  	<tr class="active" onclick="document.location='<%= admin_message_path(message) %>';" style="cursor:pointer;">
+			  		<td style="color: <%= color %>"><%= message.name %></td>
+			  		<td><%= message.message.truncate(30) %></td>
+			  		<td><%= message.email %></td>
+			  		<td><%= link_to 'Delete', admin_delete_message_path(message), method: :delete, class: 'btn btn-xs btn-danger' %></td>
+			  	</tr>
+
+			  <% end %>
+			</tbody>
+		</table>
+	</div>
+<% else %>
+
+	<h3>No Messages</h3>
+
+<% end %>

@@ -11,11 +11,14 @@
 </head>
 <body>
 
+  <% if current_user.present? && current_user.admin %>
+	  <%= render 'layouts/admin_header' %>
+  <% end %>
+
+	<%= render 'layouts/admin_side_bar' %>
+
+
   
-  <%= render 'layouts/admin_header' %>
-
-  <%= render 'layouts/admin_side_bar' %>
-
 
 
 </body>

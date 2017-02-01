@@ -1,10 +1,13 @@
-<div class="col-xs-3  side_content" >
+<div class="col-xs-4 side_content" >
   <div class="well">
-	  <h3 class="logo" onclick="document.location='<%= root_path %>'">Logo</h3>
+	  <h3 class="logo" onclick="document.location='<%= root_path %>'">Commented Code</h3>
+
+    <%= image_tag('code-in-comments.jpg', class: 'img_responsive')   %>
+
   </div>
 
   <div class="well">
-    <h4>Blog Categories</h4>
+    <h4>Keep in touch</h4>
   
     <hr>
     <ul>
@@ -20,7 +23,7 @@
         <% end %>
       </li>
       <li>
-        <%= link_to new_contact_path, style: 'text-decoration:none; color:#9e0f0f;' do %>
+        <%= link_to new_message_path, style: 'text-decoration:none; color:#9e0f0f;' do %>
           <p class="glyphics_p" ><i class="fa fa-2x fa-envelope glyphics" aria-hidden="true"></i>Email</p>
         <% end %>
       </li>
