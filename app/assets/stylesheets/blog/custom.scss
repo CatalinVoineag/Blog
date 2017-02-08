@@ -100,6 +100,7 @@ p {
 
 .glyphics_p {
   cursor: pointer;
+  display:inline-block;
 
   &:hover {
     color: #555;
@@ -109,6 +110,11 @@ p {
 .text_area {
   max-width: 100%;
   max-height: 250px;
+}
+
+.shorter_hr {
+	margin-top: 10px;
+	margin-bottom: 10px;
 }
 
 /* SHARE ICONS */
